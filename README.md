@@ -1,4 +1,4 @@
-# Orange Color
+# Orange Colors
 
 Library for working with colors: RGB to HSV and HSV to RGB transformations; color modification by any component. 
 
