@@ -1,6 +1,6 @@
 {
   "name": "orange-color",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Orange.Color - library for working with colors",
   "main": "index.js",
   "scripts": {
