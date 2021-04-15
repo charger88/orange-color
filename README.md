@@ -15,6 +15,7 @@ Static methods provide color format transformations functionality.
 | constructor |  | Creates color object | `input` |  |
 | method | `clone` | Clones object |  | `OrangeColor` |
 | property | `hex_string` | Color hex RRGGBB representation |  | `string` |
+| property | `html_string` | Color hex RRGGBB representation with starting "#" |  | `string` |
 | property | `rgb` | Color HSV (Hue Saturation Value) representation |  | `{"h": number, "s": number, "v": number}` |
 | property | `h` | Color hue component |  | `number` |
 | property | `s` | Color saturation component |  | `number` |

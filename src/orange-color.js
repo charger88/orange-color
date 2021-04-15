@@ -78,6 +78,24 @@ class OrangeColor {
   }
 
   /**
+   * Color hex RRGGBB representation with starting "#"
+   *
+   * @type {string}
+   */
+  set html_string (value) {
+    this.rgb = this.constructor.HEX2RGB(value.slice(1))
+  }
+
+  /**
+   * Color hex RRGGBB representation with starting "#"
+   *
+   * @type {string}
+   */
+  get html_string () {
+    return '#' + this.constructor.RGB2HEX(this.rgb_data)
+  }
+
+  /**
    * Color HSV (Hue Saturation Value) representation
    *
    * @type {{"h": number, "s": number, "v": number}}
