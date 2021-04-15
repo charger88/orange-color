@@ -13,6 +13,9 @@ class OrangeColor {
     this.rgb_data = {}
     this.hsv_data = {}
     if (typeof input === 'string') {
+      input = this.constructor.parseInputString(input)
+    }
+    if (typeof input === 'string') {
       this.rgb = this.constructor.HEX2RGB(input)
     } else if (typeof input === 'object') {
       if (input.hasOwnProperty('r') && input.hasOwnProperty('g') && input.hasOwnProperty('b')) {
@@ -25,6 +28,26 @@ class OrangeColor {
     } else {
       throw new Error(`Incorrect input type: ${typeof input} is provided, string or object required`)
     }
+  }
+
+  /**
+   * Parses input
+   *
+   * @param {string} input String in one of these formats: RRGGBB, #RRGGBB, rgb(R,G,B), hsv(H,S,V) (spaces allowed)
+   *
+   * @return {string|{"h": number, "s": number, "v": number}|{"r": number, "g": number, "b": number}} input String in RRGGBB format or object with "h,s,v" or "r,g,b" properties
+   */
+  static parseInputString (input) {
+    input = input.replace(/\s/g, '')
+    let match;
+    match = input.match(/^#?([0-9a-fA-F]{3})$/)
+    if (match) return `${match[1][0]}${match[1][0]}${match[1][1]}${match[1][1]}${match[1][2]}${match[1][2]}`
+    match = input.match(/^#?([0-9a-fA-F]{6})$/)
+    if (match) return match[1]
+    match = input.match(/^rgba?\(([0-9]{1,3}),([0-9]{1,3}),([0-9]{1,3})(,[0-9]\.?[0-9]*)?\)$/)
+    if (match) return {"r": parseInt(match[1]), "g": parseInt(match[2]), "b": parseInt(match[3])}
+    match = input.match(/^hsv\(([0-9]{1,3}),([0-9]{1,3}),([0-9]{1,3})\)$/)
+    if (match) return {"h": parseInt(match[1]), "s": parseInt(match[2]), "v": parseInt(match[3])}
   }
 
   /**
